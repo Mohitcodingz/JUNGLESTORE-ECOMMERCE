@@ -1,9 +1,7 @@
-const express = express();
+const express = require('express');
 const router = express.Router();
-router.get('/register',(req,res)=>{
-res.send('register page')
-})
+
 router.post('/register',(req,res)=>{
-res.send('register page post')  
+res.send('Register Route Working')  
 })
 module.exports = router;
