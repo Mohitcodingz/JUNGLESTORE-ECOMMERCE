@@ -40,8 +40,6 @@ async function registerUser(req, res) {
     }
 }
 async function loginUser(req, res) {
-    let email = req.body.email;
-    let loginPassword = req.body.password;
     const userExists = await user.findOne({
         email: req.body.email
     })
@@ -64,15 +62,12 @@ async function loginUser(req, res) {
             })
         }
         else {
-
-
-
             const token = jwt.sign({ userId: userExists._id }, process.env.JWT_SECRET)
             // TO CREATE A TOKEN USIG JSWT.SIGN WE REQUIRE A USER_ID IN THE MONGODB + MY SCEREETKEY
-            res.json({
+            return res.json({
                 msg: "Congratulation Your password is correct!",
                 success: true,
-                token:token
+                token: token
             })
         }
     }
