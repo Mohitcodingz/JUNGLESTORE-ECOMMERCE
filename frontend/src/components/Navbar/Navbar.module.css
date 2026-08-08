@@ -1,0 +1,49 @@
+.navbar {
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+    box-sizing: border-box;
+
+    border-bottom: 1px solid #ddd;
+}
+
+/* Logo */
+
+.logo a {
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Search */
+
+.search {
+    display: flex;
+    gap: 8px;
+}
+
+.search input {
+    width: 300px;
+    padding: 8px;
+}
+
+.search button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+/* Right side */
+
+.actions {
+    display: flex;
+    gap: 20px;
+}
+
+.actions a {
+    text-decoration: none;
+}
