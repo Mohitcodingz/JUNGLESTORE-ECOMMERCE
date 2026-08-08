@@ -1,5 +1,6 @@
 const user = require('../models/user')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 async function registerUser(req, res) {
     const existingUser = await user.findOne({
         email: req.body.email,
@@ -38,15 +39,43 @@ async function registerUser(req, res) {
         }
     }
 }
-async function loginUser(req,res) {
-let email = req.body.email;
-let password =  req.body.password;
-const userExists = await user.findOne({
-    email:req.body.email
- })
- if(userExists){
+async function loginUser(req, res) {
+    let email = req.body.email;
+    let loginPassword = req.body.password;
+    const userExists = await user.findOne({
+        email: req.body.email
+    })
+    if (!userExists) {
+        res.json({
+            msg: "This user Doesn't exists",
+            success: false
+        }
+        )
+    }
+    else {
+        let isPasswordCorrect = bcrypt.compareSync(
+            req.body.password,
+            userExists.password
+        )
+        if (!isPasswordCorrect) {
+            return res.json({
+                msg: "The password is incorrect!",
+                success: false
+            })
+        }
+        else {
 
- }
+
+
+            const token = jwt.sign({ userId: userExists._id }, process.env.JWT_SECRET)
+            // TO CREATE A TOKEN USIG JSWT.SIGN WE REQUIRE A USER_ID IN THE MONGODB + MY SCEREETKEY
+            res.json({
+                msg: "Congratulation Your password is correct!",
+                success: true,
+                token:token
+            })
+        }
+    }
 }
 
-module.exports = { registerUser, loginUser }
+module.exports = { registerUser, loginUser }    
