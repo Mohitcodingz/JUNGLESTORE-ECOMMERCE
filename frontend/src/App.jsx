@@ -10,22 +10,21 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
 
 export default function App() {
-    return (
-        <BrowserRouter>
+  return (
+    <BrowserRouter>
 
-            <Navbar />
+      <Navbar />
 
-            <Routes>
+      <Routes>
 
-                <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />} />
 
-                <Route path="/register" element={<Register />} />
-                <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
-                {/* Login will go here */}
 
-            </Routes>
+      </Routes>
 
-        </BrowserRouter>
-    );
+    </BrowserRouter>
+  );
 }
