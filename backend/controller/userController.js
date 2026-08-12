@@ -68,7 +68,7 @@ async function loginUser(req, res) {
                 msg: "Congratulation Your password is correct!",
                 success: true,
                 token: token
-            })
+            })  
         }
     }
 }

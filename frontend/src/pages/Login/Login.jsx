@@ -25,6 +25,29 @@ export default function Login() {
             console.error('The error is', error)
         }
     }
+    async function getProfile() {
+        console.log("CHECK PROFILE CLICKED");
+
+        const token = localStorage.getItem('token');
+        console.log("TOKEN:", token);
+
+        try {
+            const response = await axios.get('http://localhost:3000/profile', {
+                headers: {
+                    authorization: token
+                }
+            });
+
+            console.log("PROFILE RESPONSE:", response.data);
+
+        } catch (error) {
+            console.error("PROFILE ERROR:", error);
+        }
+    }
+    async function logOut(){
+ localStorage.removeItem("token");
+ console.log('the user has been logged Out')
+    }
     return (
         <div style={{ display: "flex", alignItems: 'center', justifyContent: "center", flexDirection: 'column' }}>
             <h2>Login Page</h2>
@@ -36,6 +59,8 @@ export default function Login() {
                 <div className="btnContainer" style={{ display: 'flex', flexDirection: 'row', gap: '20px' }}>
                     <button type='button' onClick={reset}>Reset</button>
                     <button type='submit'>Submit</button>
+                    {/* <button type='button' onClick={getProfile}>CheckProfile</button> */}
+                    <button type='button' onClick={logOut}>Logout</button>
                 </div>
             </form>
             <p>Don't have an Account</p>

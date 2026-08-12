@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 function Navbar() {
+    const token = localStorage.getItem('token');
     return (
         <nav className={styles.navbar}>
 
@@ -10,7 +11,7 @@ function Navbar() {
             <div className={styles.logo}>
                 <Link to="/">JungleStore</Link>
             </div>
-
+        
             {/* Middle - Search */}
             <div className={styles.search}>
                 <input
@@ -23,9 +24,12 @@ function Navbar() {
             {/* Right - User / Cart */}
             <div className={styles.actions}>
 
-                <Link to="/login">
-                    Account
-                </Link>
+                {
+                 token ? (<Link to='/login'>Profile</Link>) : (<Link to='/register'>Account</Link>)
+
+                }
+
+                 
 
                 <Link to="/cart">
                     Cart
