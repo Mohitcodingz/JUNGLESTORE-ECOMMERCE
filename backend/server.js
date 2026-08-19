@@ -1,5 +1,5 @@
 // we will create the server here not routes to acquire the .env and using the config() this is a function inside of the dotenv so it can process env port.
-const app = require('./app');
+const app = require('./app')
 const dotenv = require('dotenv');
 const connectDB = require('./config/db')
 dotenv.config();

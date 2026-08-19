@@ -44,9 +44,9 @@ export default function Login() {
             console.error("PROFILE ERROR:", error);
         }
     }
-    async function logOut(){
- localStorage.removeItem("token");
- console.log('the user has been logged Out')
+    async function logOut() {
+        localStorage.removeItem("token");
+        console.log('the user has been logged Out')
     }
     return (
         <div style={{ display: "flex", alignItems: 'center', justifyContent: "center", flexDirection: 'column' }}>
